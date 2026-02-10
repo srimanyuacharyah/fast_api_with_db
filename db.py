@@ -10,13 +10,17 @@ class Base(DeclarativeBase):
 
 
 DATABASE_URL = os.getenv("DATABASE_URL")
-if not DATABASE_URL:
-    raise ValueError("DATABASE_URL environment variable is not set")
 
-engine = create_engine(DATABASE_URL)
-sessionlocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+engine = None
+sessionlocal = None
+
+if DATABASE_URL:
+    engine = create_engine(DATABASE_URL)
+    sessionlocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def get_db():
+    if not sessionlocal:
+        raise ValueError("DATABASE_URL environment variable is not set")
     db = sessionlocal()
     try:
         yield db
