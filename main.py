@@ -5,7 +5,7 @@ from routes.email_routes import router as email_router
 from db import engine
 from models import Base
 
-app = FastAPI(docs_url="/api-docs")
+app = FastAPI()
 
 app.include_router(user_router)
 app.include_router(ai_response_router)
