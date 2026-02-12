@@ -2,6 +2,8 @@ from fastapi import FastAPI
 from routes.user_routes import router as user_router
 from routes.ai_response_routes import router as ai_response_router
 from routes.email_routes import router as email_router
+from routes.document_routes import router as document_router
+from routes.image_routes import router as image_router
 from db import engine
 from models import Base
 from fastapi.middleware.cors import CORSMiddleware
@@ -17,6 +19,8 @@ app.add_middleware(
 app.include_router(user_router)
 app.include_router(ai_response_router)
 app.include_router(email_router)
+app.include_router(document_router)
+app.include_router(image_router)
 #to create database
 
 if engine:

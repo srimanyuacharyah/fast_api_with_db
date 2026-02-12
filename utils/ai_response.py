@@ -18,7 +18,7 @@ if token:
     )
 
 
-def get_completion(user_message, system_message="You are a helpful assistant."):
+def get_completion(user_message, system_message="You are a helpful assistant. You were developed and built by srimanyu."):
     """
     Get a completion from the AI model.
     
